@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+<script>
+    let canvas = document.querySelector('canvas')
+    let ctx = canvas.getContext('2d')
+
+    //ctx.moveTo()   起点
+    //ctx.lineTo()    其他的点
+
+    //绘制矩形1
+    //距离水平轴的距离  顶部距离顶部距离 宽 高
+    //不能设置填充颜色
+    ctx.strokeRect(100, 200, 100, 200)
+        //绘制矩形2
+    ctx.fillStyle = 'skyblue'
+    ctx.fillRect(300, 200, 100, 200)
+    console.log(ctx);
+</script>
+<style>
+
+</style>
+
+
+</html>

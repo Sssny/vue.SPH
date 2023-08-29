@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form action="" class="example-form">
+        <div>
+            <label for="name">名称</label>
+            <input type="text" name="name" id="name" placeholder="please input your name">
+        </div>
+        <div>
+            <label for="res">输入</label>
+            <textarea type="multipart" name="res" id="res" placeholder="这里是每一次输入的结果"></textarea>
+        </div>
+    </form> -->
+    <div class="outer">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+
+    </div>
+    <div class="square"></div>
+    <style>
+        .square {
+            width: 10%;
+            height: 10vw;
+            background: tomato;
+        }
+        
+        .outer {
+            display: flex;
+            height: 100px;
+        }
+        
+        .left {
+            width: 100px;
+            background: tomato;
+        }
+        
+        .right {
+            width: 100px;
+            background: gold;
+        }
+        
+        .center {
+            flex: 1;
+            background: lightgreen;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const resEle = document.querySelector("#res");
+
+            function changeOutputVal(value) {
+                resEle.value += `\n${ value }`;
+            }
+
+            function debounce(fn, delay = 500) {
+                let timer = null;
+                return function(...args) {
+                    console.log(args);
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+
+                    timer = setTimeout(() => {
+                        console.log(this)
+                        fn.apply(this, args);
+                    }, delay);
+                }
+            }
+
+            function throttle(func, wait) {
+                //定义初始时间
+                var oldTime = 0;
+                return function() {
+                    console.log('this', this)
+                        // var _this = this;
+                    var args = arguments;
+                    // console.log('_this', _this)
+                    //当前时间戳
+                    var newTime = +new Date();
+                    //判断用当前时间减去旧的时间，如果大于wait指定的时间就会触发
+                    if (newTime - oldTime > wait) {
+                        //执行触发的函数
+                        func.apply(this, args)
+                        console.log(this)
+                            //将旧时间更新
+                        oldTime = newTime;
+                    }
+                }
+            }
+
+            function throttle1(fn, delay) {
+                let oldtime = 0
+                return function(...args) {
+                    console.log(args)
+                    let newtime = +new Date()
+                    if (newtime - oldtime > delay) {
+                        fn.apply(this, args)
+                        oldtime = newtime;
+                    }
+                }
+            }
+
+            const outputRes = debounce(changeOutputVal, 7000);
+
+            const inputEle = document.querySelector("#name");
+
+            inputEle.addEventListener("input", (eve) => {
+                outputRes(eve.target.value);
+            });
+
+            // function fn() {
+            //     var a = 1
+
+            //     function add() {
+            //         return a + 1
+            //     }
+            //     return add
+            // }
+            // let b = fn()
+            // var c = b()
+            // var c = b()
+            // fn()()
+            // console.log(c)
+            let mydebounce = function(fn, wait) {
+                let timer = null
+                return (...argus) => {
+                    if (timer) clearTimeout(TIMER)
+                    timer = setTimeout(() => {
+                        fn.apply(this, argus)
+                    }, wait)
+                }
+            }
+            let mythrottle = function(fn, wait) {
+                let oldtime = 0
+                return function() {
+                    console.log(arguments)
+                    let newTime = +new Date()
+                    if (newTime - oldtime > wait) {
+
+                        fn.apply(this, arguments)
+                    }
+                    oldtime = newTime
+                }
+            }
+
+            Function.prototype.newCall = function(obj) {
+                if (typeof this != 'Function') console.error('')
+
+                obj = obj || window
+                obj.p = this
+                let args = [...arguments].slice(1)
+                let result = obj.p(...args)
+                delete obj.p
+                return result
+            }
+            person.mycall(egg, 'dianzan')
+
+          function buble(arr){
+            let len = arr.length 
+            let exchange
+            for (let i = 0; i < len; i++) {
+               exchange = false
+               for (let j = 0; j < len-1-i; j++) {
+                if(arr[j]>arr[j+1]){
+                  exchange = true
+                  [arr[j],arr[j+1]]=[arr[j+1],arr[j]]
+                }
+                 
+               }
+               if(!exchange) break
+            }
+          }
+
+
+          
+
+        }
+    </script>
+</body>
+
+</html>
