@@ -127,7 +127,7 @@ export default {
 
           //表头
           .chosetype {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             color: #666;
 
             table {
